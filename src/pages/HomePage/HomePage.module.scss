@@ -1,0 +1,39 @@
+.homePage {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+  &.loaded {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.headerWrapper {
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.loaded .imageContainer img {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.sectionHeading {
+  font-family: "Cookie";
+  font-size: 3.5em;
+  color: #8b4513;
+  text-align: center;
+  margin: 20px 20px;
+  transition: opacity 1s ease 0.5s, transform 1s ease 0.5s;
+  opacity: 0;
+  transform: translateY(20px);
+  i {
+    font-size: 0.75em;
+    margin: 20px;
+  }
+}
+
+.loaded .sectionHeading {
+  opacity: 1;
+  transform: translateY(0);
+}

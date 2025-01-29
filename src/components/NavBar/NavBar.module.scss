@@ -1,0 +1,44 @@
+.navBar {
+  background-color: #fadadd;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  height: max-content;
+  div {
+    display: flex;
+  }
+
+  h1 {
+    margin: auto;
+    margin-right: 250px;
+    font-family: "Cookie";
+    color: #8b4513;
+    font-size: 4em;
+    text-align: center;
+  }
+  img {
+    height: 80px;
+    width: 80px;
+  }
+
+  .navLinks {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+
+    li {
+      a {
+        text-decoration: none;
+        font-family: "Quicksand";
+        font-size: 1.2rem;
+        color: #8b4513;
+        transition: color 0.3s ease;
+        font-weight: bold;
+
+        &:hover {
+          color: #d4a373;
+        }
+      }
+    }
+  }
+}
