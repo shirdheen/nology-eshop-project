@@ -1,0 +1,35 @@
+.dessertsPage {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+
+  &.loaded {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pageTitle {
+  font-family: "Cookie";
+  font-size: 3.5rem;
+  color: #8b4513;
+  margin: 20px 20px;
+  &.loaded {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  i {
+    font-size: 0.75em;
+    margin: 20px;
+  }
+}
+
+.dessertsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}

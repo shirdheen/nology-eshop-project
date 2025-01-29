@@ -30,13 +30,14 @@
       a {
         text-decoration: none;
         font-family: "Quicksand";
-        font-size: 1.2rem;
+        font-size: 1.6rem;
         color: #8b4513;
         transition: color 0.3s ease;
         font-weight: bold;
 
         &:hover {
-          color: #d4a373;
+          color: #6b3d09;
+          text-decoration: underline;
         }
       }
     }
