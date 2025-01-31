@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router";
+import { CartContext } from "../../context/CartContext";
 import {
   fetchDessertById,
   updateQuantity,
@@ -7,8 +8,9 @@ import {
 import classes from "./DessertDetailsPage.module.scss";
 import NavBar from "../../components/NavBar/NavBar";
 
-const DessertDetailsPage = ({ addToCart }) => {
+const DessertDetailsPage = () => {
   const { id } = useParams();
+  const { addToCart } = useContext(CartContext);
   const [dessert, setDessert] = useState(null);
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);

@@ -5,7 +5,7 @@ const NavBar = () => {
   return (
     <nav className={classes.navBar}>
       <div>
-        <img src="src/assets/logo-no-bg.png" alt="Logo" />
+        <img src="/src/assets/logo-no-bg.png" alt="Logo" />
         <h1>Whisk and Whimsy!</h1>
       </div>
       <ul className={classes.navLinks}>
@@ -19,7 +19,7 @@ const NavBar = () => {
           <Link to="/desserts">Desserts</Link>
         </li>
         <li>
-          <Link to="/about">Cart</Link>
+          <Link to="/cart">Cart</Link>
         </li>
       </ul>
     </nav>
