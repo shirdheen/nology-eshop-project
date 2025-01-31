@@ -1,5 +1,8 @@
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
+import { Link } from "react-router";
+import classes from "./CartPage.module.scss";
+import NavBar from "../../components/NavBar/NavBar";
 
 const CartPage = () => {
   const { cart, removeFromCart, updateCartQuantity, clearCart } =
@@ -9,37 +12,56 @@ const CartPage = () => {
     cart.reduce((total, item) => total + item.price * item.quantity, 0);
 
   return (
-    <div>
-      <h1>Your Cart</h1>
-      {cart.length === 0 ? (
-        <p>You cart is empty.</p>
-      ) : (
-        <div>
-          {cart.map((item, index) => (
-            <div key={index}>
-              <img src={item.imageUrl} alt={item.name} />
-              <div>
-                <h2>
-                  {item.name}-{item.variant}
-                </h2>
-                <p>${item.price.toFixed(2)} each</p>
-                <input
-                  type="number"
-                  value={item.quantity}
-                  min="1"
-                  onChange={(e) =>
-                    updateCartQuantity(index, parseInt(e.target.value, 10))
-                  }
-                />
-                <button onClick={() => removeFromCart(index)}>Remove</button>
+    <>
+      <NavBar />
+      <div className={classes.cartPage}>
+        <h1 className={classes.heading}>Your Cart</h1>
+        {cart.length === 0 ? (
+          <div className={classes.emptyCart}>
+            <p>You cart is empty.</p>
+            <Link to="/desserts" className={classes.continueShopping}>
+              Continue Shopping
+            </Link>
+          </div>
+        ) : (
+          <div>
+            {cart.map((item, index) => (
+              <div className={classes.cartItem} key={index}>
+                <img src={item.imageUrl} alt={item.name} />
+                <div>
+                  <h2>
+                    {item.name} - {item.variant}
+                  </h2>
+                  <p className={classes.unitPrice}>
+                    ${item.price.toFixed(2)} each
+                  </p>
+                  <input
+                    type="number"
+                    value={item.quantity}
+                    min="1"
+                    onChange={(e) =>
+                      updateCartQuantity(index, parseInt(e.target.value, 10))
+                    }
+                  />
+                  <button
+                    className={classes.removeButton}
+                    onClick={() => removeFromCart(index)}
+                  >
+                    Remove
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
-          <h3>Total: ${getTotalPrice().toFixed(2)}</h3>
-          <button onClick={clearCart}>Checkout</button>
-        </div>
-      )}
-    </div>
+            ))}
+            <h3 className={classes.totalPrice}>
+              Total: ${getTotalPrice().toFixed(2)}
+            </h3>
+            <button className={classes.checkoutButton} onClick={clearCart}>
+              Checkout
+            </button>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 
