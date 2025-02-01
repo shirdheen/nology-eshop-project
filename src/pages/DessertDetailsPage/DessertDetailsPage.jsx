@@ -10,19 +10,31 @@ import NavBar from "../../components/NavBar/NavBar";
 
 const DessertDetailsPage = () => {
   const { id } = useParams();
-  const { addToCart } = useContext(CartContext);
+  const { cart, addToCart } = useContext(CartContext);
   const [dessert, setDessert] = useState(null);
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getDessert = async () => {
+      setIsLoading(true);
       const fetchedDessert = await fetchDessertById(id);
       setDessert(fetchedDessert);
+      setIsLoading(false);
     };
 
     getDessert();
   }, [id]);
+
+  useEffect(() => {
+    const matchStock = async () => {
+      const updatedDessert = await fetchDessertById(id);
+      setDessert(updatedDessert);
+    };
+
+    matchStock();
+  }, [cart]);
 
   const handleVariantChange = (event) => {
     setSelectedVariantIndex(parseInt(event.target.value, 10));
@@ -49,18 +61,18 @@ const DessertDetailsPage = () => {
         setDessert((prev) => ({
           ...prev,
           quantity: prev.quantity.map((q, index) =>
-            index === selectedVariantIndex ? Math.max(q - quantity, 0) : q
+            index === selectedVariantIndex ? q - quantity : q
           ),
         }));
       }
     }
   };
 
-  if (!dessert) {
-    return <p>Loading...</p>;
+  if (isLoading || !dessert) {
+    return <p>Loading...</p>; // ADD LOADING SPINNER
   }
 
-  const remainingQuantity = dessert.quantity[selectedVariantIndex] - quantity;
+  const remainingQuantity = dessert.quantity[selectedVariantIndex];
 
   return (
     <>
@@ -91,7 +103,7 @@ const DessertDetailsPage = () => {
             <input
               type="number"
               min="1"
-              max={dessert.quantity[selectedVariantIndex]}
+              max={remainingQuantity}
               value={quantity}
               onChange={handleQuantityChange}
             />

@@ -57,7 +57,7 @@ export const fetchDessertById = async (id) => {
 // Update the stock quantity on Firestore
 export const updateQuantity = async (
   dessertId,
-  variantName,
+  variantIndex,
   quantityPurchased
 ) => {
   try {
@@ -72,18 +72,14 @@ export const updateQuantity = async (
     const dessert = docSnap.data();
 
     // Updating the stock for the current variant
-    const updatedVariants = dessert.variants.map((variant) => {
-      if (variant.name === variantName) {
-        return {
-          ...variant,
-          quantity: Math.max(variant.quantity - quantityPurchased, 0),
-        };
-      }
-      return variant;
-    });
+    const updatedQuantities = [...dessert.quantity];
+    updatedQuantities[variantIndex] = Math.max(
+      updatedQuantities[variantIndex] - quantityPurchased,
+      0
+    );
 
     // Write updated stock back to Firestore
-    await updateDoc(docRef, { variant: updatedVariants });
+    await updateDoc(docRef, { quantity: updatedQuantities });
 
     return true;
   } catch (error) {

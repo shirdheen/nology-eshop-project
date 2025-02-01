@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { CartContext } from "../../context/CartContext";
 import { Link } from "react-router";
 import classes from "./CartPage.module.scss";
@@ -7,6 +7,11 @@ import NavBar from "../../components/NavBar/NavBar";
 const CartPage = () => {
   const { cart, removeFromCart, updateCartQuantity, clearCart } =
     useContext(CartContext);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => setIsLoaded(true), 300);
+  });
 
   const getTotalPrice = () =>
     cart.reduce((total, item) => total + item.price * item.quantity, 0);
@@ -14,10 +19,12 @@ const CartPage = () => {
   return (
     <>
       <NavBar />
-      <div className={classes.cartPage}>
+      <div className={`${classes.cartPage} ${isLoaded ? classes.loaded : ""}`}>
         <h1 className={classes.heading}>Your Cart</h1>
         {cart.length === 0 ? (
-          <div className={classes.emptyCart}>
+          <div
+            className={`${classes.emptyCart} ${isLoaded ? classes.loaded : ""}`}
+          >
             <p>You cart is empty.</p>
             <Link to="/desserts" className={classes.continueShopping}>
               Continue Shopping
@@ -26,7 +33,12 @@ const CartPage = () => {
         ) : (
           <div>
             {cart.map((item, index) => (
-              <div className={classes.cartItem} key={index}>
+              <div
+                className={`${classes.cartItem} ${
+                  isLoaded ? classes.loaded : ""
+                }`}
+                key={index}
+              >
                 <img src={item.imageUrl} alt={item.name} />
                 <div>
                   <h2>
@@ -52,7 +64,11 @@ const CartPage = () => {
                 </div>
               </div>
             ))}
-            <h3 className={classes.totalPrice}>
+            <h3
+              className={`${classes.totalPrice} ${
+                isLoaded ? classes.loaded : ""
+              }`}
+            >
               Total: ${getTotalPrice().toFixed(2)}
             </h3>
             <button className={classes.checkoutButton} onClick={clearCart}>
