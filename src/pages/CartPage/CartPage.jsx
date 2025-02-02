@@ -33,12 +33,7 @@ const CartPage = () => {
         ) : (
           <div>
             {cart.map((item, index) => (
-              <div
-                className={`${classes.cartItem} ${
-                  isLoaded ? classes.loaded : ""
-                }`}
-                key={index}
-              >
+              <div className={classes.cartItem} key={index}>
                 <img src={item.imageUrl} alt={item.name} />
                 <div>
                   <h2>
@@ -54,6 +49,7 @@ const CartPage = () => {
                     onChange={(e) =>
                       updateCartQuantity(index, parseInt(e.target.value, 10))
                     }
+                    className={classes.cartInput}
                   />
                   <button
                     className={classes.removeButton}

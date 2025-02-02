@@ -12,9 +12,9 @@ const NavBar = () => {
         <li>
           <Link to="/">Home</Link>
         </li>
-        <li>
+        {/* <li>
           <Link to="/about">About</Link>
-        </li>
+        </li> */}
         <li>
           <Link to="/desserts">Desserts</Link>
         </li>

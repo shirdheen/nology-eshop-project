@@ -7,6 +7,7 @@ import {
 } from "../../services/firebase-functions";
 import classes from "./DessertDetailsPage.module.scss";
 import NavBar from "../../components/NavBar/NavBar";
+import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 
 const DessertDetailsPage = () => {
   const { id } = useParams();
@@ -15,6 +16,7 @@ const DessertDetailsPage = () => {
   const [selectedVariantIndex, setSelectedVariantIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     const getDessert = async () => {
@@ -22,6 +24,7 @@ const DessertDetailsPage = () => {
       const fetchedDessert = await fetchDessertById(id);
       setDessert(fetchedDessert);
       setIsLoading(false);
+      setIsLoaded(true);
     };
 
     getDessert();
@@ -69,7 +72,7 @@ const DessertDetailsPage = () => {
   };
 
   if (isLoading || !dessert) {
-    return <p>Loading...</p>; // ADD LOADING SPINNER
+    return <LoadingSpinner />; // ADD LOADING SPINNER
   }
 
   const remainingQuantity = dessert.quantity[selectedVariantIndex];
@@ -77,7 +80,11 @@ const DessertDetailsPage = () => {
   return (
     <>
       <NavBar />
-      <div className={classes.dessertDetailsPage}>
+      <div
+        className={`${classes.dessertDetailsPage} ${
+          isLoaded ? classes.loaded : ""
+        }`}
+      >
         <div className={classes.imageContainer}>
           <img src={dessert.imageUrl} alt={dessert.name} />
         </div>

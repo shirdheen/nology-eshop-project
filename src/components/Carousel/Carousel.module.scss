@@ -82,3 +82,15 @@
   }
   right: 0;
 }
+
+.dessertLink {
+  text-decoration: none;
+  color: #8b4513;
+  font-family: "Quicksand";
+  transition: color 0.3s ease-in-out;
+
+  &:hover {
+    color: #6d3610;
+    text-decoration: underline;
+  }
+}

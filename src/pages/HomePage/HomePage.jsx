@@ -36,7 +36,7 @@ const HomePage = () => {
       <section>
         <h2 className={classes.sectionHeading}>
           <i className="fa-solid fa-star"></i>
-          Baker's Choice
+          Chef's Favouites
           <i className="fa-solid fa-star"></i>
         </h2>
         <Carousel desserts={featuredDesserts} />

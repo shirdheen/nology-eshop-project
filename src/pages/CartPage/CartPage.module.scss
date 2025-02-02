@@ -22,17 +22,13 @@
 .cartItem {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 20px;
   background: #fadadd;
   padding: 10px;
   border-radius: 8px;
-  opacity: 0;
   transform: translateX(-20px);
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
-  &.loaded {
-    opacity: 1;
-    transform: translateX(0);
-  }
   img {
     width: 80px;
     height: 80px;
@@ -49,14 +45,18 @@
     font-family: "Quicksand";
     font-weight: bold;
   }
-  input {
+  .cartInput {
     width: 50px;
     text-align: center;
     margin: 5px;
-    transition: transform 0.2s ease-in-out;
-    &:focus {
-      transform: scale(1.1);
-    }
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 1rem;
+    background-color: #fff8e1;
+    font-family: "Quicksand";
+    color: #8b4513;
+    text-align: center;
+    border: 1px solid #8b4513;
   }
 }
 
@@ -73,7 +73,7 @@
   transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
   &:hover {
     background: #6d3610;
-    transfrom: scale(1.1);
+    transform: scale(1.1);
   }
 }
 
@@ -124,6 +124,7 @@
 
 .removeButton {
   margin-top: 10px;
+  margin-left: 5px;
   border: none;
   font-family: "Quicksand";
   padding: 5px 7.5px;
@@ -136,6 +137,6 @@
   &:hover {
     background: #6b3d89;
     cursor: pointer;
-    transfrom: scale(1.1);
+    transform: scale(1.1);
   }
 }

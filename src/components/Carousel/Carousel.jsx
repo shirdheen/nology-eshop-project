@@ -1,8 +1,9 @@
 import classes from "./Carousel.module.scss";
 import { useState, useRef } from "react";
+import { Link } from "react-router";
 
 const Carousel = ({ desserts }) => {
-  console.log(desserts);
+  // console.log(desserts);
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -39,7 +40,14 @@ const Carousel = ({ desserts }) => {
                 alt={dessert.name}
                 className={classes.carouselImage}
               />
-              <h3 className={classes.carouselTitle}>{dessert.name}</h3>
+              <h3 className={classes.carouselTitle}>
+                <Link
+                  to={`/desserts/${dessert.id}`}
+                  className={classes.dessertLink}
+                >
+                  {dessert.name}
+                </Link>
+              </h3>
             </div>
           ))}
         </div>
