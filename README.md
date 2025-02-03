@@ -29,7 +29,7 @@
 1. Clone the repository
 
 ```bash
-git clone
+git clone git@github.com:shirdheen/nology-eshop-project.git
 ```
 
 2. Install dependencies
