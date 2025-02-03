@@ -16,10 +16,13 @@ const DessertCard = ({ dessert, delay }) => {
   };
 
   return (
-    <div
+    <article
       key={dessert.id}
       className={`${classes.dessertCard} ${isLoaded ? classes.loaded : ""}`}
     >
+      {dessert.favourited && (
+        <span className={classes.bestsellerLabel}>Chef's Favourite!</span>
+      )}
       <img
         src={dessert.imageUrl}
         alt={dessert.name}
@@ -32,7 +35,7 @@ const DessertCard = ({ dessert, delay }) => {
           Buy Now
         </button>
       </div>
-    </div>
+    </article>
   );
 };
 

@@ -7,7 +7,9 @@
   transition: transform 0.3s ease-in-out;
   width: 100%;
   max-width: 280px;
+  max-height: 500px;
   margin: 10px;
+  overflow: hidden;
 
   opacity: 0;
   transform: translateY(20px);
@@ -23,6 +25,24 @@
   }
 }
 
+.bestsellerLabel {
+  position: absolute;
+  top: 10px;
+  left: -60px;
+  background-color: #e63946;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: "Cookie";
+  padding: 10px;
+  border-radius: 5px;
+  transform: rotate(-30deg);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 200px;
+}
+
 .dessertImage {
   width: 100%;
   height: 180px;
@@ -31,13 +51,16 @@
 }
 
 .dessertInfo {
-  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .dessertTitle {
   font-family: "Quicksand";
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: #8b4513;
+  margin-bottom: 0;
 }
 
 .dessertPrice {
@@ -47,7 +70,7 @@
 }
 
 .buyNowButton {
-  margin-top: 10px;
+  margin-top: auto;
   padding: 8px 12px;
   background-color: #8b4513;
   color: #fff8e1;
