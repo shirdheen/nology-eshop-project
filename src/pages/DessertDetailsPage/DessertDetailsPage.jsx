@@ -126,7 +126,7 @@ const DessertDetailsPage = () => {
           >
             {dessert.quantity[selectedVariantIndex] > 0
               ? "Add to Cart"
-              : "Out of Stock"}
+              : "Sorry, the item is out of stock"}
           </button>
         </div>
       </div>
