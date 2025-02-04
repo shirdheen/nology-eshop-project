@@ -70,8 +70,14 @@ npm run dev
 ## Known Issues
 
 - UI needs optimisation on certain screen sizes.
+- No toast notifications.
+- Better error handling.
+- `CartContext.jsx` could be restructured better to carry out testing of the functions.
 
 ## Bugs to be Fixed
+
+- Images in the carousel need to be fixed (CSS).
+- Implement an infinite carousel.
 
 ## Future Goals
 
